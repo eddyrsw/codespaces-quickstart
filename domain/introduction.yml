@@ -1,0 +1,46 @@
+version: "3.1"
+
+actions:
+  - action_check_profile
+
+slots:
+  first_name:
+    type: text
+    mappings:
+      - type: from_llm
+
+  my_profile:
+    type: text
+    mappings:
+      - type: custom
+        action: "action_check_profile"
+
+responses:
+  utter_greet:
+    - text: "Hello! I'm Abbie, your dating concierge!"
+
+  utter_ask_first_name:
+    - text: "What is your name?"
+
+  utter_letsgo:
+    - text: "Hi {first_name}, let's find you your soulmate."
+
+  utter_check_profile:
+    - text: "Your profile is:\n{my_profile}"
+
+  utter_no_profile:
+    - text: "You don't have a profile yet."
+
+  utter_free_chitchat_response:
+    - text: "placeholder"
+      metadata:
+        rephrase: True
+        rephrase_prompt: |
+          The assistant can help the user find a date with someone who is compatible to their personality.
+          The assistant can also help in planning dates for the user.
+          The assistant is helpful, creative, clever, and very friendly.
+          The user is making small talk, and the assistant should respond, keeping things light.
+          Context / previous conversation with the user:
+          {{history}}
+          {{current_input}}
+          Suggested AI Response:

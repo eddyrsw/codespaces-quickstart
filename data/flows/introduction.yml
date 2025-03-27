@@ -1,0 +1,28 @@
+flows:
+  say_hello:
+    description: "Greet the user"
+    steps:
+      - action: "utter_greet"
+      - link: get_user_first_name
+
+  get_user_first_name:
+    description: "Collect the user's first name"
+    steps:         
+      - collect: first_name   
+      - action: "utter_letsgo"
+
+  action_check_profile:
+    name: Check my profile
+    description: "check my profile"
+    steps:
+      - action: "action_check_profile"
+        next:
+          - if: "slots.my_profile"
+            then:
+              - action: "utter_check_profile"
+                next: END
+          - else:
+              - action: "utter_no_profile"
+                next: END
+
+      

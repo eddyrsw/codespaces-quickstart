@@ -1,0 +1,14 @@
+flows:
+  find_date:
+    description: "find a date for the user"
+    steps:
+      - action: "utter_find_date"
+      - action: "action_find_date"
+        next:
+          - if: "slots.date_profile"
+            then:
+              - action: "utter_found_match"
+                next: END
+          - else:
+              - action: "utter_no_matches"
+                next: END

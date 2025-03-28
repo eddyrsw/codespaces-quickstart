@@ -1,0 +1,21 @@
+version: "3.1"
+
+actions:
+  - action_find_date
+
+slots:
+  date_profile:
+    type: text
+    mappings:
+      - type: custom
+        action: "action_find_date"
+
+responses:
+  utter_find_date:
+    - text: "Let me see if I can find any profiles that are a good match for you"
+
+  utter_found_match:
+    - text: "I found you a great match\n {date_profile}"
+
+  utter_no_matches:
+    - text: "No matches found at this time. Let's try again later."

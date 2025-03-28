@@ -3,13 +3,15 @@ flows:
     description: "Greet the user"
     steps:
       - action: "utter_greet"
-      - link: get_user_first_name
+      - action: "utter_greet_1"
+      - link: "action_register_user"
 
-  get_user_first_name:
-    description: "Collect the user's first name"
-    steps:         
-      - collect: first_name   
-      - action: "utter_letsgo"
+  # get_user_first_name:
+  #   description: "Collect the user's first name"
+  #   steps:         
+  #     - collect: first_name   
+  #     - action: "action_register_user"
+  #       next: END
 
   action_check_profile:
     name: Check my profile

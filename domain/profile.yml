@@ -1,0 +1,81 @@
+version: "3.1"
+
+actions:
+  - action_register_user
+  - action_create_profile
+
+slots:
+  response:
+    type: text
+    mappings:
+      - type: custom
+        action: "action_register_user"
+
+  user_id:
+    type: text
+
+  first_name:
+    type: text
+    mappings:
+      - type: from_llm
+
+  full_name:
+    type: text
+    mappings:
+      - type: from_llm
+
+  age:
+    type: text
+    mappings:
+      - type: from_llm
+
+  gender:
+    type: text
+    mappings:
+      - type: from_llm
+
+  bio:
+    type: text
+    mappings:
+      - type: from_llm
+
+  interests:
+    type: text
+    mappings:
+      - type: from_llm
+
+  prefered_gender:
+    type: text
+    mappings:
+      - type: from_llm
+
+responses:
+  utter_register:
+    - text: "{response}"
+
+  utter_not_registered:
+    - text: "Could not register user"
+
+  utter_ask_first_name:
+    - text: "What is your name?"
+
+  utter_ask_full_name:
+    - text: "What is your full name?"
+
+  utter_ask_age:
+    - text: "How old are you?"
+
+  utter_ask_gender:
+    - text: "What is your gender?"
+
+  utter_ask_interests:
+    - text: "What are your hobbies and interests?"
+
+  utter_ask_bio:
+    - text: "Tell me a bit about yourself and what you are looking for"
+
+  utter_ask_prefered_gender:
+    - text: "What gender are you looking for?"
+
+  utter_create_profile:
+    - text: "Let's create your profile so that I understand what you are looking for in a partner."

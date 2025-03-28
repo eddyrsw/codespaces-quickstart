@@ -4,10 +4,10 @@ actions:
   - action_check_profile
 
 slots:
-  first_name:
-    type: text
-    mappings:
-      - type: from_llm
+  # first_name:
+  #   type: text
+  #   mappings:
+  #     - type: from_llm
 
   my_profile:
     type: text
@@ -19,8 +19,11 @@ responses:
   utter_greet:
     - text: "Hello! I'm Abbie, your dating concierge!"
 
-  utter_ask_first_name:
-    - text: "What is your name?"
+  utter_greet_1:
+    - text: "I am here to find you your perfect match and organize your dates."
+
+  # utter_ask_first_name:
+  #   - text: "What is your name?"
 
   utter_letsgo:
     - text: "Hi {first_name}, let's find you your soulmate."

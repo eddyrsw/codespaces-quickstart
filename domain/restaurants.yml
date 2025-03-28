@@ -1,0 +1,23 @@
+version: "3.1"
+
+actions:
+  - action_list_restaurants
+
+slots:
+  # first_name:
+  #   type: text
+  #   mappings:
+  #     - type: from_llm
+
+  restaurants:
+    type: text
+    mappings:
+      - type: custom
+        action: "action_list_restaurants"
+
+responses:
+  utter_list_restaurants:
+    - text: "Restaurants:\n{restaurants}"
+
+  utter_no_restaurants:
+    - text: "There are no restaurants available at the moment"

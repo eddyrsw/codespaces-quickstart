@@ -14,10 +14,6 @@ class ActionCheckProfile(Action):
     def run(
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[str, Any]
     ) -> List[Dict[Text, Any]]:
-        # hard-coded balance for tutorial purposes. in production this
-        # would be retrieved from a database or an API
         url = 'https://dummy-json.mock.beeceptor.com/posts/1'
         response = requests.get(url)
-        # profile = "Eddyraj Rajiah"
-
         return [SlotSet("my_profile", response.json())]

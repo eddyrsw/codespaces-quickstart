@@ -1,0 +1,14 @@
+flows:
+  action_list_restaurants:
+    name: List restaurants
+    description: "list the restaurants"
+    steps:
+      - action: "action_list_restaurants"
+        next:
+          - if: "slots.restaurants"
+            then:
+              - action: "utter_list_restaurants"
+                next: END
+          - else:
+              - action: "utter_no_restaurants"
+                next: END

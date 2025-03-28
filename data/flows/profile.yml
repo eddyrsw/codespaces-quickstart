@@ -1,0 +1,30 @@
+flows:
+  action_register_user:
+    name: register user
+    description: "register user"
+    steps:
+      - collect: first_name   
+      - action: "action_register_user"
+        next:
+          - if: "slots.user_id"
+            then:
+              # - action: "utter_register"
+              - link: "action_create_profile"
+
+          - else:
+              - action: "utter_not_registered"
+                next: END
+
+  action_create_profile:
+    name: create profile
+    description: "Create the user profile"
+    steps:
+      - action: "utter_create_profile"
+      - collect: "full_name"
+      - collect: "age"
+      - collect: "gender"
+      - collect: "bio"
+      - collect: "interests"
+      - collect: "prefered_gender"
+      - action: "action_create_profile"
+        next: END

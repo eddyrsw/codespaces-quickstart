@@ -1,0 +1,6 @@
+flows:
+  plan_date:
+    description: "plan a date for the user"
+    steps:
+      - action: "utter_plan_date"
+      - link: action_list_restaurants

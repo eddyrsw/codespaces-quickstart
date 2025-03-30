@@ -24,6 +24,6 @@ class ActionRegisterUser(Action):
         # Convert response to JSON
         resp = response.json()
         my_interests = ", ".join(resp.get('interests'))
-        profile = f"{resp.get('name')},{resp.get('age')} in {resp.get('location').get('city')}. She's into {my_interests}"
+        profile = f"{resp.get('name')}, {resp.get('age')} in {resp.get('location').get('city')}. She's into {my_interests}"
 
         return [SlotSet("date_profile", profile )]

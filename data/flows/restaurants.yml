@@ -8,7 +8,45 @@ flows:
           - if: "slots.restaurants"
             then:
               - action: "utter_list_restaurants"
-                next: END
+              - link: action_get_restaurant_details
           - else:
               - action: "utter_no_restaurants"
+                next: END
+
+  action_get_restaurant_details:
+    name: Get restaurant details
+    description: "get the details of a restaurant"
+    steps:
+      - collect: "restaurant_name"
+      - action: "action_get_restaurant_details"
+        next:
+          - if: "slots.restaurant_details"
+            then:
+              - action: "utter_restaurant_details"
+              # - action: "utter_make_booking"
+              - collect: "make_booking"
+                next: 
+                  - if: "slots.make_booking = 'yes'"
+                    then:
+                      - link: action_create_restaurant_booking
+                  - else: END
+          - else:
+              - action: "utter_no_restaurant_details"
+                next: END
+
+  action_create_restaurant_booking:
+    name: Create restaurant booking
+    description: "create a booking at a specified restaurant"
+    steps:
+      - collect: "restaurant_name"
+      - collect: "booking_time"
+      - collect: "booking_date"
+      - action: "action_create_restaurant_booking"
+        next:
+          - if: "slots.restaurant_booking_details"
+            then:
+              - action: "utter_restaurant_booking_details"
+                next: END
+          - else:
+              - action: "utter_no_restaurant_booking_details"
                 next: END

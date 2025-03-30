@@ -2,22 +2,82 @@ version: "3.1"
 
 actions:
   - action_list_restaurants
+  - action_get_restaurant_details
+  - action_create_restaurant_booking
 
 slots:
-  # first_name:
-  #   type: text
-  #   mappings:
-  #     - type: from_llm
-
   restaurants:
     type: text
     mappings:
       - type: custom
         action: "action_list_restaurants"
 
+  restaurant_name:
+    type: text
+    mappings:
+      - type: from_llm
+
+  restaurant_details:
+    type: text
+    mappings:
+      - type: custom
+        action: "action_get_restaurant_details"
+
+  booking_time:
+    type: text
+    mappings:
+      - type: from_llm
+
+  booking_date:
+    type: text
+    mappings:
+      - type: from_llm
+
+  make_booking:
+    type: text
+    mappings:
+      - type: from_llm
+
+  restaurant_booking_details:
+    type: text
+    mappings:
+      - type: custom
+        action: "action_create_restaurant_booking"
+
+
 responses:
   utter_list_restaurants:
-    - text: "Restaurants:\n{restaurants}"
+    - text: "{restaurants}"
 
   utter_no_restaurants:
     - text: "There are no restaurants available at the moment"
+
+  utter_ask_restaurant_name:
+    - text: "Which restaurant would you prefer?"
+
+  utter_restaurant_details:
+    - text: "Restaurant details:\n {restaurant_details}"
+
+  utter_no_restaurant_details:
+    - text: "I could not retrieve this restaurant's details."
+
+  utter_ask_make_booking:
+    - text: "Would you like me to book a table for you?"
+
+  utter_choose_another_restaurant:
+   - text: "Choose another restaurant?"
+
+  utter_ask_booking_time:
+    - text: "What time would you like to reserve a table?"
+
+  utter_ask_booking_date:
+    - text: "What date is the reservation for?"
+
+  utter_ask_party_size:
+    - text: "What is the party size"
+
+  utter_restaurant_booking_details:
+    - text: "{restaurant_booking_details}"
+
+  utter_no_restaurant_booking_details:
+    - text: "I'm sorry, I have not been able to reserve a table"

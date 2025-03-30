@@ -1,0 +1,7 @@
+flows:
+  action_book_uber:
+    name: Book an Uber car
+    description: "book an Uber car to go to the date"
+    steps:
+      - action: "utter_not_implemented_yet"
+        next: END

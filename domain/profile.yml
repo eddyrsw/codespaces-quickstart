@@ -51,7 +51,7 @@ slots:
 
 responses:
   utter_register:
-    - text: "{response}"
+    - text: "I have created your profile. I will find the most compatible profiles for you. Feel free to ask me to find you a date whenever you want to go out."
 
   utter_not_registered:
     - text: "Could not register user"

@@ -8,7 +8,6 @@ flows:
         next:
           - if: "slots.user_id"
             then:
-              # - action: "utter_register"
               - link: "action_create_profile"
 
           - else:
@@ -27,4 +26,9 @@ flows:
       - collect: "interests"
       - collect: "prefered_gender"
       - action: "action_create_profile"
-        next: END
+        next: 
+          - if: "slots.response"
+            then:
+              - action: "utter_register"
+                next: END
+          - else: END

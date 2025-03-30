@@ -1,0 +1,8 @@
+version: "3.1"
+
+actions:
+  - action_book_uber
+
+responses:
+  utter_not_implemented_yet:
+    - text: "This feature has not yet been implemented. Just waiting on Eddy..."
